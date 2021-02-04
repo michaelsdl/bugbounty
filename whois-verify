@@ -1,0 +1,17 @@
+#!/bin/bash
+# require install the whois tool 
+# In this example was used the apple organization name
+
+for i in $(cat [txt file path with domain list]); do
+
+	org=$(whois $i | grep 'Org')
+	echo $org
+
+	if [[ $org == *Apple* || $org == *apple* || $org == *APPLE* ]];
+	then
+	  echo $i >> [path of txt with results]
+	else
+	  echo "$i No Match"
+	fi
+
+done
