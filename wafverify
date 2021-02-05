@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#require install wafw00f tool
+
+for i in $(cat [txt with subdomains]); do
+
+	waf=$(wafw00f -a $i)
+	echo $waf
+	echo "\n"
+
+	if [[ $waf == *'No WAF detected'* ]];
+	then
+	  echo $i >> [txt path to export results]
+	else
+	  echo "$i protected by WAF"
+	  echo "\n"
+	fi
+
+done
